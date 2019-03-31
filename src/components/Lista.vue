@@ -10,6 +10,7 @@
   </v-data-table>
 </template>
 
+
 <script>
 import { mapActions, mapState } from "vuex";
 
