@@ -1,50 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from './plugins/axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    clientes: [
-      {
-        id: 1,
-        nome: "Romes 00",
-        email: "rs@gmail.com",
-        fone: "65665656",
-        conta: "conta1"
-      },
-      {
-        id: 2,
-        nome: "Romes2",
-        email: "rs@gmail.com",
-        fone: "65665656",
-        conta: "conta1"
-      },
-      {
-        id: 3,
-        nome: "Romes3",
-        email: "rs@gmail.com",
-        fone: "65665656",
-        conta: "conta1"
-      },
-      {
-        id: 4,
-        nome: "Romes4",
-        email: "rs@gmail.com",
-        fone: "65665656",
-        conta: "conta1"
-      }
-    ]
+    clientes: []
   },
   mutations: {
-    CHANGE_CLIENTE(state, payload) {
+    CHANGE_CLIENTES(state, payload) {
       state.clientes = payload
     },
-    CLEAR_CLIENTE(state, payload) {
+    CLEAR_CLIENTES(state, payload) {
       state.clientes = []
     }
   },
   actions: {
+    startClientes: context => {
+      return axios.get('contabilidade/clientes/').then(
+        response => {
+          context.commit('CHANGE_CLIENTES', response.data)
+        }
+      ).catch(
+        () => context.commit('CLEAR_CLIENTES')
+      )
+    }
 
   }
 })
