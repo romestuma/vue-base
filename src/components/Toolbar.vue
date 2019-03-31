@@ -17,7 +17,6 @@
   </v-toolbar>
 </template>
 
-
 <script>
 export default {
   props: {
@@ -26,8 +25,8 @@ export default {
       type: String
     },
     menus: {
-        type: Array,
-        default:() => {}
+      type: Array,
+      default: () => {}
     }
   }
 };
