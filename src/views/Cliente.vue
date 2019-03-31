@@ -5,7 +5,7 @@
       <td>{{ props.item.nome }}</td>
       <td>{{ props.item.email }}</td>
       <td>{{ props.item.fone }}</td>
-      <td>{{ props.item.conta }}</td>
+      <td>{{ props.item.conta_display }}</td>
     </template>
   </v-data-table>
 </template>
@@ -26,12 +26,21 @@ export default {
         { text: "Nome", value: "nome" },
         { text: "E-mail", value: "email" },
         { text: "Fone", value: "fone" },
-        { text: "Conta", value: "conta" }
+        { text: "Conta", value: "conta_display" }
       ]
     };
   },
   computed: {
     ...mapState(["clientes"])
+  },
+  methods: {
+    ...mapActions(["startClientes"]),
+    reload() {
+      this.startClientes();
+    }
+  },
+  mounted() {
+    this.reload();
   }
 };
 </script>
