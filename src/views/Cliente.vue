@@ -1,13 +1,16 @@
 <template>
-  <v-data-table :headers="headers" :items="clientes" class="elevation-1">
-    <template v-slot:items="props">
-      <td>{{ props.item.id }}</td>
-      <td>{{ props.item.nome }}</td>
-      <td>{{ props.item.email }}</td>
-      <td>{{ props.item.fone }}</td>
-      <td>{{ props.item.conta_display }}</td>
-    </template>
-  </v-data-table>
+  <div id="cliente">
+    <hfz-lista></hfz-lista>
+    <v-data-table :headers="headers" :items="clientes" class="elevation-1">
+      <template v-slot:items="props">
+        <td>{{ props.item.id }}</td>
+        <td>{{ props.item.nome }}</td>
+        <td>{{ props.item.email }}</td>
+        <td>{{ props.item.fone }}</td>
+        <td>{{ props.item.conta_display }}</td>
+      </template>
+    </v-data-table>
+  </div>
 </template>
 
 <script>
